@@ -1,0 +1,48 @@
+$white : white ;
+$black : black ;
+@mixin border-btn {
+    border: 3px solid yellow;
+}
+
+$langages :'HTML5','CCS3','JAVA','REACT';
+.text{
+    color: red;
+    font-size: 20px;
+}
+
+textarea, h1{
+    @extend .text ;
+}
+
+.btn{
+    @include border-btn;
+}
+
+@function background ($background){
+
+    @if $background !=white {
+        @return  $white;
+    }
+    @else {
+       @return $black ;
+    }
+}
+
+@function first (){
+
+    @return nth($langages , 1 );
+}
+
+@function last(){
+    @return nth($langages , length($langages) )
+}
+
+.langages{
+  content:last();
+ // content:first();
+}
+
+.background{
+    background-color: white;
+    color: background(white);
+}
